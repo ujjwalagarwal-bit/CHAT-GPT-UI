@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ChatGPT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ========== Sidebar ========== -->
+  <aside id="side" aria-label="Sidebar">
+    <div class="side-top">
+      <span class="brand">ChatGPT</span>
+      <span class="sp"></span>
+      <button class="icon" id="srch" aria-label="Search chats"><i data-i="search"></i></button>
+      <button class="icon" id="closeSide" aria-label="Close sidebar"><i data-i="panel"></i></button>
+    </div>
+
+    <button class="nav" id="newChat"><i data-i="compose"></i>New chat</button>
+    <input id="q" placeholder="Search chats" hidden>
+    <button class="nav" data-soon="Images"><i data-i="images"></i>Images</button>
+    <button class="nav" data-soon="Scheduled"><i data-i="clock"></i>Scheduled</button>
+    <button class="nav" data-soon="Library"><i data-i="lib"></i>Library</button>
+    <button class="nav" data-soon="Plugins"><i data-i="plug"></i>Plugins</button>
+    <button class="nav" data-soon="Codex"><i data-i="code"></i>Codex</button>
+    <button class="nav" data-soon="Explore"><i data-i="dots"></i>Explore</button>
+
+    <div class="label">Projects</div>
+    <div class="empty">No projects</div>
+    <div class="label">Recents</div>
+    <div id="hist"></div>
+
+    <div class="me">
+      <div class="av">UA</div>
+      <div><b>Ujjwal Agarwal</b><small>Free</small></div>
+    </div>
+    <button class="claim" data-soon="Offers"><i data-i="gift"></i>Claim offer</button>
+  </aside>
+  <div id="shade"></div>
+
+  <!-- ========== Main ========== -->
+  <section id="main" class="fresh">
+    <header>
+      <div class="hl">
+        <button class="icon" id="openSide" aria-label="Open sidebar"><i data-i="panel"></i></button>
+      </div>
+
+      <div class="seg">
+        <button class="on">Chat</button>
+        <button data-soon="Work mode">&#10022; Work</button>
+      </div>
+
+      <div class="hr">
+        <button class="offer" id="keyBtn"><i data-i="key"></i><span id="keyLabel">Add API key</span></button>
+        <button class="icon" id="theme" aria-label="Toggle theme"><i data-i="sun"></i></button>
+      </div>
+    </header>
+
+    <div id="scroll"><div class="wrap" id="feed"></div></div>
+
+    <footer>
+      <h1 id="greet">What&rsquo;s on the agenda today?</h1>
+
+      <div id="box">
+        <button class="icon" data-soon="Attachments" aria-label="Add files"><i data-i="plus"></i></button>
+        <textarea id="input" rows="1" placeholder="Ask ChatGPT" aria-label="Message"></textarea>
+        <button id="think" aria-pressed="false"><i data-i="think"></i>Think</button>
+        <button class="icon" id="mic" aria-label="Dictate"><i data-i="mic"></i></button>
+        <button id="send" class="voice" aria-label="Start voice"></button>
+      </div>
+
+      <div id="sugg">
+        <button data-fill="Help me design a sticker of "><i data-i="img"></i>Create an image or sticker</button>
+        <button data-fill="Help me write or edit: "><i data-i="pen"></i>Write or edit</button>
+        <button data-soon="Web search"><i data-i="globe"></i>Search the web</button>
+      </div>
+
+      <p class="note" id="note">Replies come from the API you add in settings. Your key stays in this browser.</p>
+    </footer>
+
+    <div id="voice">
+      <div class="orb"></div>
+      <div class="vt">
+        <b>Meet the new Voice</b>
+        <span>More natural conversations, powered by our next-generation voice model</span>
+      </div>
+      <button class="vbtn" data-soon="Voice">Start Voice</button>
+      <button class="icon" id="vx" aria-label="Dismiss"><i data-i="x"></i></button>
+    </div>
+  </section>
+</div>
+
+<!-- ========== API settings ========== -->
+<dialog id="settings">
+  <form method="dialog" id="settingsForm">
+    <h2>API settings</h2>
+    <p id="settingsMsg"></p>
+
+    <label>Provider
+      <select id="provider">
+        <option value="openai">OpenAI-compatible (OpenAI, OpenRouter, Groq, local server)</option>
+        <option value="anthropic">Anthropic (Claude)</option>
+      </select>
+    </label>
+    <label>API key
+      <input id="apiKey" type="password" autocomplete="off" placeholder="Paste your key">
+    </label>
+    <label>Base URL
+      <input id="baseUrl" type="url">
+    </label>
+    <label>Model
+      <input id="model" type="text">
+    </label>
+
+    <p class="hint">The key is saved only in this browser (localStorage) and sent straight to the provider you chose. For a public website, put the key on a backend instead.</p>
+
+    <div class="row">
+      <button type="button" class="ghost" id="clearKey">Remove key</button>
+      <span class="sp"></span>
+      <button type="button" class="ghost" id="cancelSettings">Cancel</button>
+      <button type="submit" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="api.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
